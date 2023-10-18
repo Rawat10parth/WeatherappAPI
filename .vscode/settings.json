@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/2780142e-3e5e-4f38-9b5c-5555e7c5f377/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/MausamWEBAPP",
+    "appService.deploySubpath": "."
+}
