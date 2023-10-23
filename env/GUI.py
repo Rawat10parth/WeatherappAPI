@@ -1,3 +1,4 @@
+import json
 import tkinter as tk
 import requests
 from tkinter import messagebox
@@ -5,9 +6,10 @@ from PIL import Image, ImageTk
 import ttkbootstrap
 
 # Function to get weather information from WeatherAPI.com
+
 def get_weather(city, response=None):
     API_Key = '1479be5ef5c043fc857140638231810'
-    url = f"http://api.weatherapi.com/v1/forecast.json?Key={API_Key}&q={city}&days=1&aqi=no&alerts=no"
+    url = f"http://api.weatherapi.com/v1/forecast.json?Key={API_Key}&q={city}&days=2&aqi=no&alerts=no"
     response = requests.get(url)
 
     if response.status_code == 404:
@@ -16,6 +18,9 @@ def get_weather(city, response=None):
 
     # Parse the response JSON to get weather information
     weather = response.json()
+
+    #print(json.dumps(weather, indent=2))
+
     icon_id = weather['current']['condition']['icon']
     temperature = weather['current']['temp_c']
     description = weather['current']['condition']['text']
@@ -48,9 +53,10 @@ def search():
     description_label.configure(text=f"Description: {description}")
 
 
+
 root = ttkbootstrap.Window(themename="morph")
 root.title("Weather App")
-root.geometry("500x500")
+root.geometry("1000x1000")
 
 # Entry widget -> to enter the city name
 city_entry = ttkbootstrap.Entry(root, font="Helvetica, 18")
